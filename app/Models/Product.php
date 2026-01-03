@@ -15,8 +15,16 @@ class Product extends Model
         'min_stock',
         'unit',
         'image',
-        'type'
+        'type',
+        'location',
+        'status',
+        'approved_by'
     ];
+
+    public function approver()
+    {
+        return $this->belongsTo(User::class, 'approved_by');
+    }
 
     public function category()
     {

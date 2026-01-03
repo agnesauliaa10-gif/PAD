@@ -2,15 +2,13 @@
     <!-- Logo Section -->
     <div class="flex items-center justify-center h-24 border-b border-gray-700">
         <div class="flex items-center space-x-3">
-            <div class="p-2 bg-white rounded-lg shadow-lg">
-                <svg class="w-8 h-8 text-[#1e293b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                </svg>
+            <div
+                class="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden border border-gray-600 shadow-sm">
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" class="max-h-full max-w-full object-contain p-0.5">
             </div>
             <div class="flex flex-col">
-                <span class="font-bold text-2xl tracking-wide">WMS</span>
-                <span class="text-xs text-gray-400 font-medium tracking-wider">Management System</span>
+                <span class="font-bold text-2xl tracking-wide uppercase leading-tight">WMS</span>
+                <span class="text-[10px] text-gray-400 font-bold tracking-widest uppercase">System</span>
             </div>
         </div>
     </div>
@@ -103,16 +101,5 @@
                 Reports
             </a>
         @endif
-    </div>
-
-    <!-- Storage Status (Optional from Ref) -->
-    <div class="p-4 mx-4 mb-6 bg-[#2d3a52] rounded-xl shadow-inner">
-        <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-semibold text-gray-300">Warehouse Cap.</span>
-            <span class="text-xs font-bold text-white">75%</span>
-        </div>
-        <div class="w-full bg-gray-600 rounded-full h-1.5">
-            <div class="bg-indigo-400 h-1.5 rounded-full" style="width: 75%"></div>
-        </div>
     </div>
 </div>

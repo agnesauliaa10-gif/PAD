@@ -14,7 +14,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $totalProducts = Product::count();
+        $totalProducts = Product::where('status', 'approved')->count();
         $totalSuppliers = Supplier::count();
         $totalCategories = Category::count();
         $lowStockCount = Product::whereColumn('stock', '<=', 'min_stock')->count();
@@ -42,7 +42,8 @@ class DashboardController extends Controller
         $pendingApprovals = 0;
         if (auth()->user()->role === 'supervisor') {
             $pendingApprovals = Transaction::where('status', 'pending')->count() +
-                \App\Models\StockAdjustment::where('status', 'pending')->count();
+                \App\Models\StockAdjustment::where('status', 'pending')->count() +
+                Product::where('status', 'pending')->count();
         }
 
         return view('dashboard', compact(

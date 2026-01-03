@@ -30,7 +30,7 @@ class StockAdjustmentController extends Controller
 
     public function create()
     {
-        $products = Product::orderBy('name')->get();
+        $products = Product::where('status', 'approved')->orderBy('name')->get();
         return view('stock_adjustments.create', compact('products'));
     }
 

@@ -29,7 +29,7 @@ class TransactionController extends Controller
     public function create(Request $request)
     {
         $type = $request->input('type', 'inbound');
-        $products = \App\Models\Product::orderBy('name')->get();
+        $products = \App\Models\Product::where('status', 'approved')->orderBy('name')->get();
         $suppliers = \App\Models\Supplier::all();
 
         return view('transactions.create', compact('products', 'suppliers', 'type'));

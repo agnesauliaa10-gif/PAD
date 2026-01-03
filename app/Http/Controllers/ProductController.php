@@ -10,10 +10,30 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('category')->latest()->paginate(10);
-        return view('products.index', compact('products'));
+        $status = $request->input('status', 'approved'); // Default to approved
+        $search = $request->input('search');
+
+        $products = Product::with(['category', 'approver'])
+            ->when($status, function ($q) use ($status) {
+                return $q->where('status', $status);
+            })
+            ->when($search, function ($q) use ($search) {
+                return $q->where(function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('sku', 'like', '%' . $search . '%');
+                });
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
+        if ($request->ajax()) {
+            return view('products._table', compact('products', 'status'))->render();
+        }
+
+        return view('products.index', compact('products', 'status'));
     }
 
     /**
@@ -38,6 +58,7 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'min_stock' => 'required|integer|min:0',
             'unit' => 'required|string|max:50',
+            'location' => 'nullable|string|max:255',
             'image' => 'nullable|image|max:2048',
         ]);
 
@@ -47,9 +68,10 @@ class ProductController extends Controller
 
         $validated['stock'] = 0; // Initial stock is 0
 
-        Product::create($validated);
+        Product::create($validated + ['status' => 'pending']);
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        return redirect()->route('products.index', ['status' => 'pending'])
+            ->with('success', 'Product created and awaiting supervisor approval.');
     }
 
     /**
@@ -82,6 +104,7 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'min_stock' => 'required|integer|min:0',
             'unit' => 'required|string|max:50',
+            'location' => 'nullable|string|max:255',
             'image' => 'nullable|image|max:2048',
         ]);
 
@@ -111,6 +134,34 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }
 
+
+    public function approve(Product $product)
+    {
+        if (auth()->user()->role !== 'supervisor') {
+            abort(403);
+        }
+
+        $product->update([
+            'status' => 'approved',
+            'approved_by' => auth()->id(),
+        ]);
+
+        return back()->with('success', 'Product approved successfully.');
+    }
+
+    public function reject(Product $product)
+    {
+        if (auth()->user()->role !== 'supervisor') {
+            abort(403);
+        }
+
+        $product->update([
+            'status' => 'rejected',
+            'approved_by' => auth()->id(),
+        ]);
+
+        return back()->with('success', 'Product request rejected.');
+    }
 
     public function getBatches(Product $product)
     {

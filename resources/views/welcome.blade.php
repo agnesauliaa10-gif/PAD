@@ -19,16 +19,13 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-3">
-                    <div class="bg-indigo-600 rounded-lg p-2 text-white">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                        </svg>
+                    <div class="w-14 h-14 bg-white rounded-xl overflow-hidden flex items-center justify-center border border-slate-100 shadow-sm transition-transform duration-300 hover:scale-105">
+                        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="max-h-full max-w-full object-contain p-1">
                     </div>
                     <div>
-                        <span class="block text-xl font-bold text-slate-900 leading-none">WMS</span>
-                        <span class="block text-xs text-indigo-600 font-semibold tracking-wider uppercase">Pro
-                            Logistix</span>
+                        <span class="block text-xl font-bold text-slate-900 leading-none">PT Rekayasa </span>
+                        <span class="block text-xs text-indigo-600 font-semibold tracking-wider uppercase">Manufaktur 
+                            dan Jasa</span>
                     </div>
                 </div>
 
@@ -74,13 +71,11 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight mb-8">
-                Master Your Inventory <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">With
-                    Precision.</span>
+                Warehouse Management System 
             </h1>
             <p class="mt-6 max-w-2xl mx-auto text-xl text-slate-600 leading-relaxed">
-                Streamline operations, track stock in real-time, and optimize your supply chain with our
-                professional-grade warehouse management solution.
+                Selamat datang di portal logistik internal. Platform terpusat untuk pengelolaan material produksi, 
+                stok suku cadang, dan distribusi unit mesin espresso secara real time dan akurat.
             </p>
             <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="{{ route('login') }}"
@@ -124,7 +119,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-sm font-bold text-indigo-600 uppercase tracking-widest mb-2">Key Capabilities</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Why choose WMS Pro Logistix?</h3>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Why choose PT Rekayasa Manufaktur dan Jasa</h3>
             </div>
 
             <div class="grid md:grid-cols-3 gap-12">
@@ -139,8 +134,9 @@
                         </svg>
                     </div>
                     <h4 class="text-xl font-bold text-slate-900 mb-3">Real-time Inventory</h4>
-                    <p class="text-slate-600 leading-relaxed">Instant stock updates across all channels. Eliminate
-                        overselling and keep your data accurate to the second.</p>
+                    <p class="text-slate-600 leading-relaxed">
+                        Monitoring ketersediaan bahan baku logam dan komponen mesin espresso. Notifikasi otomatis untuk stok limit (Safety Stock).
+                    </p>
                 </div>
 
                 <!-- Feature 2 -->
@@ -154,8 +150,9 @@
                         </svg>
                     </div>
                     <h4 class="text-xl font-bold text-slate-900 mb-3">Inbound & Outbound</h4>
-                    <p class="text-slate-600 leading-relaxed">Seamlessly manage supplier shipments and customer
-                        distributions properly with automated transaction logging.</p>
+                    <p class="text-slate-600 leading-relaxed">
+                        Pencatatan barang masuk dari supplier dan penjadwalan pengiriman unit mesin jadi ke klien atau distributor.
+                    </p>
                 </div>
 
                 <!-- Feature 3 -->
@@ -169,8 +166,9 @@
                         </svg>
                     </div>
                     <h4 class="text-xl font-bold text-slate-900 mb-3">Smart Analytics</h4>
-                    <p class="text-slate-600 leading-relaxed">Gain actionable insights with our comprehensive dashboard
-                        components. Track low stock alerts and movement trends.</p>
+                    <p class="text-slate-600 leading-relaxed">
+                        Rekapitulasi pergerakan barang dan laporan stok opname (harian, mingguan, bulanan, dan tahunan) yang dapat diunduh.
+                    </p>
                 </div>
             </div>
         </div>
@@ -190,16 +188,19 @@
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
                     <h2 class="text-sm font-bold text-indigo-400 uppercase tracking-widest mb-2">About Us</h2>
-                    <h3 class="text-3xl md:text-4xl font-bold mb-6">WMS Pro Logistix: <br>Setting the Standard in
-                        Warehousing.</h3>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-6">PT REMAJA :  <br>Warehouse 
+                        Management System.
+                    </h3>
                     <p class="text-slate-300 text-lg leading-relaxed mb-6">
-                        Established with a vision to revolutionize inventory control, WMS Pro Logistix serves industries
-                        ranging from healthcare to retail. We believe in precision, reliability, and speed.
+                        Sistem ini dibangun untuk mendukung penuh lini produksi PT REMAJA. 
+                        Kami percaya bahwa mesin espresso terbaik lahir dari manajemen material yang rapi, 
+                        akurat, dan efisien—mulai dari penerimaan bahan baku logam hingga perakitan akhir.
+
                     </p>
                     <p class="text-slate-300 text-lg leading-relaxed mb-8">
-                        Our facility utilizes state-of-the-art tracking systems to ensure every item is accounted for.
-                        Whether it's critical medical supplies or consumer goods, we handle your inventory with the
-                        utmost care.
+                        Dengan pelacakan real-time, kita meminimalisir kesalahan stok komponen vital 
+                        (seperti boiler, pompa, dan group head).
+
                     </p>
 
                     <div class="flex gap-8">
@@ -230,18 +231,11 @@
             <div class="grid md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="bg-indigo-600 rounded-lg p-1.5 text-white">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                            </svg>
+                        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden border border-slate-200 shadow-sm">
+                            <img src="{{ asset('img/logo.png') }}" alt="Logo" class="max-h-full max-w-full object-contain p-0.5">
                         </div>
-                        <span class="text-lg font-bold text-slate-900">WMS Pro Logistix</span>
+                        <span class="text-lg font-bold text-slate-900 leading-tight uppercase tracking-tight">PT Rekayasa  <br> <span class="text-xs text-indigo-600">Manufaktur dan Jasa</span></span>
                     </div>
-                    <p class="text-slate-500 leading-relaxed max-w-sm">
-                        Providing top-tier inventory management solutions for modern businesses. Secure, efficient, and
-                        reliable.
-                    </p>
                 </div>
 
                 <div>
@@ -280,7 +274,7 @@
             </div>
 
             <div class="border-t border-slate-100 pt-8 text-center text-sm text-slate-400">
-                <p>&copy; {{ date('Y') }} WMS Pro Logistix. All rights reserved.</p>
+                <p>&copy; {{ date('Y') }} PT Rekayasa Manufaktur dan Jasa. All rights reserved.</p>
             </div>
         </div>
     </footer>

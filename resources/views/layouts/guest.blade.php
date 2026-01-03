@@ -37,11 +37,7 @@
             </div>
 
             <div class="relative z-20 text-white p-12 text-center">
-                <h1 class="text-5xl font-bold mb-6 tracking-tight">WMS <span class="text-indigo-400">Pro</span></h1>
-                <p class="text-xl text-gray-300 max-w-lg mx-auto leading-relaxed">
-                    Streamline your inventory, optimize your workflow, and take control of your warehouse operations
-                    with our premium management system.
-                </p>
+                <h1 class="text-5xl font-bold mb-6 tracking-tight">PT REMAJA :  <span class="text-indigo-400">Warehouse <br> Management System</span></h1>
             </div>
         </div>
 

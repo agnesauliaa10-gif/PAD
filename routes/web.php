@@ -24,7 +24,10 @@ Route::middleware('auth')->group(function () {
 
     // Supervisor-only management & reports
     Route::middleware('role:supervisor')->group(function () {
-        Route::resource('products', ProductController::class)->except(['index', 'show']);
+        Route::post('/products/{product}/approve', [ProductController::class, 'approve'])->name('products.approve');
+        Route::post('/products/{product}/reject', [ProductController::class, 'reject'])->name('products.reject');
+
+        Route::resource('products', ProductController::class)->only(['edit', 'update', 'destroy']);
         Route::resource('categories', CategoryController::class)->except(['index', 'show']);
         Route::resource('suppliers', SupplierController::class)->except(['index', 'show']);
 
@@ -33,8 +36,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/reports/inventory', [\App\Http\Controllers\ReportController::class, 'inventory'])->name('reports.inventory');
     });
 
-    // General resources (everyone can view) - Defined AFTER to avoid shadowing 'create' with '{product}'
-    Route::resource('products', ProductController::class)->only(['index', 'show']);
+    // General resources (everyone can view/create)
+    Route::resource('products', ProductController::class)->only(['index', 'show', 'create', 'store']);
     Route::resource('categories', CategoryController::class)->only(['index', 'show']);
     Route::resource('suppliers', SupplierController::class)->only(['index', 'show']);
 

@@ -6,8 +6,11 @@
 
     <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-            <div class="p-6 bg-[#f8fafc] border-b border-gray-100">
+            <div class="p-6 bg-[#f8fafc] border-b border-gray-100 flex justify-between items-center">
                 <h3 class="font-bold text-[#1e293b] uppercase tracking-wider text-sm">Create New Product</h3>
+                <span
+                    class="px-2 py-1 bg-amber-50 text-amber-600 text-[10px] font-bold uppercase rounded border border-amber-100">Requires
+                    Approval</span>
             </div>
 
             <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" class="p-6 md:p-8">
@@ -79,6 +82,17 @@
                                 class="block mt-1 w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm transition-colors"
                                 type="text" name="unit" :value="old('unit')" required placeholder="e.g. Box, Pcs, Kg" />
                             <x-input-error :messages="$errors->get('unit')" class="mt-1" />
+                        </div>
+
+                        <!-- Location -->
+                        <div>
+                            <x-input-label for="location" :value="__('Storage Location')"
+                                class="text-xs font-bold text-gray-700 uppercase" />
+                            <x-text-input id="location"
+                                class="block mt-1 w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm transition-colors"
+                                type="text" name="location" :value="old('location')"
+                                placeholder="e.g. Aisle 1, Rack B" />
+                            <x-input-error :messages="$errors->get('location')" class="mt-1" />
                         </div>
                     </div>
 

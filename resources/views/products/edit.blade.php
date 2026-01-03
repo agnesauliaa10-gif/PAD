@@ -80,6 +80,17 @@
                                 type="text" name="unit" :value="old('unit', $product->unit)" required />
                             <x-input-error :messages="$errors->get('unit')" class="mt-1" />
                         </div>
+
+                        <!-- Location -->
+                        <div>
+                            <x-input-label for="location" :value="__('Storage Location')"
+                                class="text-xs font-bold text-gray-700 uppercase" />
+                            <x-text-input id="location"
+                                class="block mt-1 w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm transition-colors"
+                                type="text" name="location" :value="old('location', $product->location)"
+                                placeholder="e.g. Aisle 1, Rack B" />
+                            <x-input-error :messages="$errors->get('location')" class="mt-1" />
+                        </div>
                     </div>
 
                     <!-- Right Column: Inventory & Details -->
