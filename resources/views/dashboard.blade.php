@@ -3,13 +3,13 @@
         <h2 class="text-2xl font-bold text-[#1e293b] tracking-tight uppercase">Dashboard</h2>
     </div>
 
-    <!-- Row 1: Key Metrics -->
+    <!-- Row 1: Key Metrics (Inventory) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
         <!-- Total Products -->
-        <div class="bg-white rounded-xl shadow-sm p-6 flex items-start justify-between">
+        <div class="bg-white rounded-xl shadow-sm p-6 flex items-start justify-between border border-gray-100">
             <div>
                 <h3 class="text-3xl font-bold text-[#1e293b] mb-1">{{ $totalProducts }}</h3>
-                <p class="text-sm font-medium text-gray-500">Total Products</p>
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Products</p>
             </div>
             <div class="p-3 bg-indigo-50 rounded-lg">
                 <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -20,10 +20,10 @@
         </div>
 
         <!-- Total Categories -->
-        <div class="bg-white rounded-xl shadow-sm p-6 flex items-start justify-between">
+        <div class="bg-white rounded-xl shadow-sm p-6 flex items-start justify-between border border-gray-100">
             <div>
                 <h3 class="text-3xl font-bold text-[#1e293b] mb-1">{{ $totalCategories }}</h3>
-                <p class="text-sm font-medium text-gray-500">Total Categories</p>
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Categories</p>
             </div>
             <div class="p-3 bg-blue-50 rounded-lg">
                 <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,25 +33,11 @@
             </div>
         </div>
 
-        <!-- Low Stock -->
-        <div class="bg-white rounded-xl shadow-sm p-6 flex items-start justify-between">
-            <div>
-                <h3 class="text-3xl font-bold text-[#1e293b] mb-1 text-red-600">{{ $lowStockCount }}</h3>
-                <p class="text-sm font-medium text-gray-500">Low Stock Alerts</p>
-            </div>
-            <div class="p-3 bg-red-50 rounded-lg">
-                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-            </div>
-        </div>
-
         <!-- Total Suppliers -->
-        <div class="bg-white rounded-xl shadow-sm p-6 flex items-start justify-between">
+        <div class="bg-white rounded-xl shadow-sm p-6 flex items-start justify-between border border-gray-100">
             <div>
                 <h3 class="text-3xl font-bold text-[#1e293b] mb-1">{{ $totalSuppliers }}</h3>
-                <p class="text-sm font-medium text-gray-500">Total Suppliers</p>
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Suppliers</p>
             </div>
             <div class="p-3 bg-orange-50 rounded-lg">
                 <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -61,73 +47,50 @@
             </div>
         </div>
 
-        <!-- Pending Approvals (Supervisor Only) -->
-        @if(auth()->user()->role === 'supervisor')
-            <a href="{{ route('transactions.index', ['status' => 'pending']) }}"
-                class="bg-white rounded-xl shadow-sm p-6 flex items-start justify-between hover:bg-amber-50 transition-colors">
-                <div>
-                    <h3 class="text-3xl font-bold text-amber-600 mb-1">{{ $pendingApprovals }}</h3>
-                    <p class="text-sm font-medium text-gray-500">Pending Approvals</p>
-                </div>
-                <div class="p-3 bg-amber-50 rounded-lg">
-                    <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                    </svg>
-                </div>
-            </a>
-        @endif
-    </div>
-
-    <!-- Row 2: Transaction Summaries -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <!-- Inbound Count -->
-        <div class="bg-white rounded-xl shadow-sm p-6 flex items-start justify-between">
+        <!-- Low Stock -->
+        <div class="bg-white rounded-xl shadow-sm p-6 flex items-start justify-between border border-gray-100">
             <div>
-                <h3 class="text-3xl font-bold text-emerald-600 mb-1">+{{ $inboundCount }}</h3>
-                <p class="text-sm font-medium text-gray-500">Inbound Orders</p>
-            </div>
-            <div class="p-3 bg-emerald-50 rounded-lg">
-                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z" />
-                </svg>
-            </div>
-        </div>
-
-        <!-- Inbound Quantity -->
-        <div class="bg-white rounded-xl shadow-sm p-6 flex items-start justify-between">
-            <div>
-                <h3 class="text-3xl font-bold text-gray-800 mb-1">{{ $inboundThisMonth }}</h3>
-                <p class="text-sm font-medium text-gray-500">Inbound Qty (Month)</p>
-            </div>
-            <div class="p-3 bg-gray-50 rounded-lg">
-                <span class="text-gray-600 font-bold text-lg">Unit</span>
-            </div>
-        </div>
-
-        <!-- Outbound Count -->
-        <div class="bg-white rounded-xl shadow-sm p-6 flex items-start justify-between">
-            <div>
-                <h3 class="text-3xl font-bold text-rose-600 mb-1">-{{ $outboundCount }}</h3>
-                <p class="text-sm font-medium text-gray-500">Outbound Orders</p>
+                <h3 class="text-3xl font-bold text-rose-600 mb-1">{{ $lowStockCount }}</h3>
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Low Stock Alerts</p>
             </div>
             <div class="p-3 bg-rose-50 rounded-lg">
                 <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z" />
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
             </div>
         </div>
+    </div>
 
-        <!-- Outbound Quantity -->
-        <div class="bg-white rounded-xl shadow-sm p-6 flex items-start justify-between">
-            <div>
-                <h3 class="text-3xl font-bold text-gray-800 mb-1">{{ $outboundThisMonth }}</h3>
-                <p class="text-sm font-medium text-gray-500">Outbound Qty (Month)</p>
+    <!-- Row 2: Transaction Summaries -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Inbound Summary -->
+        <div class="bg-white rounded-xl shadow-sm p-6 flex items-center border border-gray-100">
+            <div class="p-4 bg-emerald-50 rounded-2xl mr-6">
+                <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z" />
+                </svg>
             </div>
-            <div class="p-3 bg-gray-50 rounded-lg">
-                <span class="text-gray-600 font-bold text-lg">Unit</span>
+            <div>
+                <h3 class="text-2xl font-bold text-[#1e293b] mb-0.5">+{{ $inboundCount }}</h3>
+                <p class="text-sm font-medium text-gray-500">Inbound Transactions</p>
+                <p class="text-[10px] text-emerald-600 font-bold uppercase mt-1">{{ $inboundThisMonth }} units this month</p>
+            </div>
+        </div>
+
+        <!-- Outbound Summary -->
+        <div class="bg-white rounded-xl shadow-sm p-6 flex items-center border border-gray-100">
+            <div class="p-4 bg-rose-50 rounded-2xl mr-6">
+                <svg class="w-8 h-8 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z" />
+                </svg>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold text-[#1e293b] mb-0.5">-{{ $outboundCount }}</h3>
+                <p class="text-sm font-medium text-gray-500">Outbound Transactions</p>
+                <p class="text-[10px] text-rose-600 font-bold uppercase mt-1">{{ $outboundThisMonth }} units this month</p>
             </div>
         </div>
     </div>

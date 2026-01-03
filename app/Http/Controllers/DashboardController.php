@@ -39,13 +39,6 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
-        $pendingApprovals = 0;
-        if (auth()->user()->role === 'supervisor') {
-            $pendingApprovals = Transaction::where('status', 'pending')->count() +
-                \App\Models\StockAdjustment::where('status', 'pending')->count() +
-                Product::where('status', 'pending')->count();
-        }
-
         return view('dashboard', compact(
             'totalProducts',
             'totalSuppliers',
@@ -56,8 +49,7 @@ class DashboardController extends Controller
             'inboundThisMonth',
             'outboundThisMonth',
             'inboundCount',
-            'outboundCount',
-            'pendingApprovals'
+            'outboundCount'
         ));
     }
 }

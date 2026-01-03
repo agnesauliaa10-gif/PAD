@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-            <h2 class="text-2xl font-bold text-[#1e293b] tracking-tight uppercase">Product Management</h2>
+            <h2 class="text-2xl font-bold text-[#1e293b] tracking-tight uppercase">Inventory Management</h2>
             <p class="text-sm text-gray-500">View and manage your product catalogue</p>
         </div>
         <div>

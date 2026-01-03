@@ -25,8 +25,10 @@
             <div class="mt-2 text-3xl font-bold text-rose-600">-{{ number_format($totalOutbound) }}</div>
         </div>
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <div class="text-sm font-medium text-gray-500 uppercase">Net Movement</div>
-            <div class="mt-2 text-3xl font-bold text-gray-800">{{ number_format($totalInbound - $totalOutbound) }}</div>
+            <div class="text-sm font-medium text-gray-500 uppercase">Total Adjustment</div>
+            <div class="mt-2 text-3xl font-bold {{ $totalAdjustment >= 0 ? 'text-amber-600' : 'text-rose-600' }}">
+                {{ $totalAdjustment > 0 ? '+' : '' }}{{ number_format($totalAdjustment) }}
+            </div>
         </div>
     </div>
 

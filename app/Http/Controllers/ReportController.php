@@ -50,16 +50,30 @@ class ReportController extends Controller
 
         $transactions = $query->get();
 
+        // Calculate adjustments
+        $adjustmentQuery = StockAdjustment::where('status', 'approved');
+        switch ($type) {
+            case 'daily':
+                $adjustmentQuery->whereDate('created_at', $carbonDate->format('Y-m-d'));
+                break;
+            case 'weekly':
+                $adjustmentQuery->whereBetween('created_at', [$start, $end]);
+                break;
+            case 'monthly':
+                $adjustmentQuery->whereYear('created_at', $carbonDate->year)
+                    ->whereMonth('created_at', $carbonDate->month);
+                break;
+            case 'annual':
+                $adjustmentQuery->whereYear('created_at', $carbonDate->year);
+                break;
+        }
+        $totalAdjustment = $adjustmentQuery->sum('quantity_diff');
+
         // Calculate summaries
         $totalInbound = $transactions->where('type', 'inbound')->sum('quantity');
         $totalOutbound = $transactions->where('type', 'outbound')->sum('quantity');
 
-        // Get adjustments for this period as well? 
-        // Typically reports focus on transactions (movement), but adjustments are also movement.
-        // Let's stick to Transaction Reports for now as per "Laporan berkala (harian...)" usually implies flow.
-        // But we can include a section for adjustments if needed.
-
-        return view('reports.show', compact('transactions', 'periodLabel', 'totalInbound', 'totalOutbound', 'type', 'date'));
+        return view('reports.show', compact('transactions', 'periodLabel', 'totalInbound', 'totalOutbound', 'totalAdjustment', 'type', 'date'));
     }
 
     public function inventory()
